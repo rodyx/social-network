@@ -1,0 +1,198 @@
+.chatsFilter {
+  display: flex;
+  justify-content: center;
+
+  &>div {
+    margin: 0 15px;
+    color: #6d6c8b;
+  }
+}
+
+.messenger {
+  margin-top: 20px;
+  height: 700px;
+  display: grid;
+  grid-template-areas: 'chatlist chat info';
+  grid-template-columns: 1fr 2fr 1fr;
+  background: #18183c;
+  border-radius: 15px;
+
+  .chatList {
+    grid-area: chatlist;
+    overflow: hidden;
+
+    .chatListSearch {
+      display: flex;
+      padding: 0 20px;
+      height: 70px;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #30314f;
+    }
+
+    .list {
+      overflow: auto;
+      height: 100%;
+
+      .chatListItem {
+        display: flex;
+        height: 70px;
+        padding: 0 20px;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid #30314f;
+        transition: background-color .6s ease-out;
+
+        img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+        }
+
+        .chatListName {
+          flex: 1;
+        }
+
+        .chatListTime {
+          height: 50%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+        }
+
+        &:hover {
+          cursor: pointer;
+          background: #424294;
+        }
+      }
+    }
+  }
+
+  .chat {
+    grid-area: chat;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #30314f;
+    border-right: 1px solid #30314f;
+    overflow: hidden;
+
+     .chatDate {
+       min-height: 80px;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+     }
+
+    .messagesWrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 0 20px;
+      gap: 15px;
+      overflow: auto;
+
+      .messageText {
+        width: auto;
+        max-width: 70%;
+        padding: 15px 25px;
+      }
+
+      .messageTime {
+        font-size: 12px;
+        color: lightgray;
+      }
+
+      .yourMessage,
+      .companionMessage {
+        display: flex;
+        align-items: center;
+        width: auto;
+        gap: 20px;
+      }
+
+      .companionMessage {
+        flex-direction: row-reverse;
+      }
+
+      .yourMessage .messageText {
+        border-radius: 20px;
+        border-bottom-left-radius: 0;
+        background: #e8e7f5;
+        color: #42414e;
+      }
+
+      .companionMessage .messageText {
+        border-radius: 20px;
+        border-bottom-right-radius: 0;
+        background: #3c3b87;
+      }
+    }
+
+    .chatInput {
+      display: flex;
+      height: 70px;
+      padding: 0 20px;
+      align-items: center;
+      gap: 10px;
+      border-top: 1px solid #30314f;
+      font-size: 1.25rem;
+      color: #6d6c8b;
+
+      .chatForm {
+        flex: 1;
+
+        input {
+          width: 100%;
+        }
+      }
+
+      .chatIcons {
+        display: flex;
+        gap: 15px;
+      }
+    }
+  }
+
+  .companionInfo {
+    grid-area: info;
+    display: flex;
+    flex-direction: column;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contactAvatar {
+      flex: 3;
+      align-items: center;
+      gap: 5px;
+      border-bottom: 1px solid #30314f;
+    }
+
+    .contactInfo {
+      flex: 2;
+      padding: 15px 20px;
+      justify-content: space-evenly;
+      color: #6d6c8b;
+      border-bottom: 1px solid #30314f;
+
+      & > div {
+        display: flex;
+        gap: 15px;
+      }
+    }
+
+    .contactButtons {
+      flex: 5;
+      justify-content: flex-start;
+      padding: 15px 20px;
+      border-bottom: 1px solid #30314f;
+
+      a {
+        color: #4481ca;
+      }
+    }
+  }
+}
