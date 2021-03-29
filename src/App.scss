@@ -37,6 +37,10 @@ input {
   font-family: 'ProximaNova';
 }
 
+input[type='file'] {
+  display: none;
+}
+
 a {
   color: inherit;
   text-decoration: none;

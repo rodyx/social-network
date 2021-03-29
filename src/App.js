@@ -1,16 +1,32 @@
 import './App.scss';
 import { Header } from './components/Header/Header';
 import { Home } from './pages/Home/Home';
-import { Messenger } from './pages/Messenger/Messenger';
+import { history } from './history';
+import { routes } from "./pages/routes";
+import {
+  Switch,
+  Route,
+} from 'react-router-dom';
+import { Router } from 'react-router';
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <main>
-        {/* <Home /> */}
-        <Messenger />
-      </main>
+      <Router history={history}>
+        <Header />
+        <main>
+          <Switch>
+            {routes.map(route => (
+              <Route
+                exact={route.exact}
+                path={route.path}
+                component={route.component}
+                key={route.path}
+              />
+            ))}
+          </Switch>
+        </main>
+      </Router>
     </div>
   );
 }

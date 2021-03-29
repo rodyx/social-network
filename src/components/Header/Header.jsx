@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './styles.module.scss';
+import { NavLink } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -27,39 +28,69 @@ export const Header = () => {
         <div className={styles.headerDownLineContainer}>
           <div>
             <div>
-              <i className="fas fa-home"></i>
-              <span>Home</span>
+              <NavLink
+                to="/home"
+                activeStyle={{ color: "white" }}
+              >
+                <i className="fas fa-home"></i>
+                <span>Home</span>
+              </NavLink>
             </div>
           </div>
           <div>
             <div>
-              <i className="fas fa-wallet"></i>
-              <span>Wallet</span>
+              <NavLink
+                to="/wallet"
+                activeStyle={{ color: "white" }}
+              >
+                <i className="fas fa-wallet"></i>
+                <span>Wallet</span>
+              </NavLink>
             </div>
           </div>
           <div>
             <div>
-              <i className="fas fa-newspaper"></i>
-              <span>News</span>
+              <NavLink
+                to="/news"
+                activeStyle={{color: "white"}}
+              >
+                <i className="fas fa-newspaper"></i>
+                <span>News</span>
+              </NavLink>
             </div>
           </div>
           <div>
             <div>
-              <i className="fas fa-comment-alt"></i>
-              <span>Messenger</span>
+              <NavLink
+                to="/messenger"
+                activeStyle={{ color: "white" }}
+              >
+                <i className="fas fa-comment-alt"></i>
+                <span>Messenger</span>
+              </NavLink>
             </div>
           </div>
           <div>
             <div>
-              <i className="fas fa-user-friends"></i>
-              <span>Friends</span>
+              <NavLink
+                to="/friends"
+                activeStyle={{ color: "white" }}
+              >
+                <i className="fas fa-user-friends"></i>
+                <span>Friends</span>
+              </NavLink>
             </div>
 
           </div>
           <div>
             <div>
-              <i className="fas fa-chalkboard-teacher"></i>
-              <span>Teach</span>
+              <NavLink
+                to="/teach"
+                activeStyle={{ color: "white" }}
+              >
+                <i className="fas fa-chalkboard-teacher"></i>
+                <span>Teach</span>
+              </NavLink>
             </div>
           </div>
         </div>

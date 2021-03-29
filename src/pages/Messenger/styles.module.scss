@@ -5,6 +5,12 @@
   &>div {
     margin: 0 15px;
     color: #6d6c8b;
+    transition: 0.4s;
+    cursor: pointer;
+
+    &:hover {
+      color: white;
+    }
   }
 }
 
@@ -91,44 +97,65 @@
       gap: 15px;
       overflow: auto;
 
-      .messageText {
+      .messageBody {
         width: auto;
         max-width: 70%;
         padding: 15px 25px;
+        display: flex;
+        position: relative;
+
+        & div {
+          word-wrap: break-word;
+          overflow: hidden;
+        }
       }
 
       .messageTime {
         font-size: 12px;
         color: lightgray;
+        align-self: flex-end;
       }
 
       .yourMessage,
       .companionMessage {
+        width: auto;
         display: flex;
         align-items: center;
-        width: auto;
         gap: 20px;
+
+        & .messageStatus {
+          position: absolute;
+          bottom: 5px;
+          font-size: 0.6rem;
+          right: 5px;
+        }
+      }
+
+      .yourMessage {
+        position: relative;
+        transform: translateX(-90%);
+        animation: moveRight 0.3s forwards;
       }
 
       .companionMessage {
         flex-direction: row-reverse;
       }
 
-      .yourMessage .messageText {
-        border-radius: 20px;
+      .yourMessage .messageBody {
+        border-radius: 15px;
         border-bottom-left-radius: 0;
         background: #e8e7f5;
         color: #42414e;
       }
 
-      .companionMessage .messageText {
-        border-radius: 20px;
+      .companionMessage .messageBody {
+        border-radius: 15px;
         border-bottom-right-radius: 0;
         background: #3c3b87;
       }
     }
 
-    .chatInput {
+    .chatForm {
       display: flex;
       height: 70px;
       padding: 0 20px;
@@ -138,7 +165,23 @@
       font-size: 1.25rem;
       color: #6d6c8b;
 
-      .chatForm {
+      & label > i {
+        cursor: pointer;
+        color: #3174a0;
+        transition: 0.4s;
+
+        &:hover {
+          color: white;
+        }
+      }
+
+      & .filesCount {
+        color: rgb(151, 151, 14);
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
+      .chatInput {
         flex: 1;
 
         input {
@@ -196,3 +239,14 @@
     }
   }
 }
+
+@keyframes moveRight {
+  from {
+    transform: translateX(-90%);
+  } 
+  
+  to {
+    transform: translateX(0);
+  }
+}
+

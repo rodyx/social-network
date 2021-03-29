@@ -1,7 +1,44 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useRef } from 'react';
 import styles from './styles.module.scss';
+import { useStore } from 'effector-react';
+import { $messages, fileToBase64Fx, send} from './model'
+
+const messageStatusText = {
+  sending: 'fas fa-check',
+  send: 'fas fa-check-double'
+}
 
 export const Messenger = () => {
+  const messages = useStore($messages);
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  const handleSubmit = e => {
+    const formElements = e.currentTarget.elements
+
+    
+      const formatedValues = {
+        text: formElements.chatMessage.value,
+      }
+
+      send(formatedValues)
+    
+    
+    e.currentTarget.reset()
+    e.preventDefault()
+  }
+
+  const handleFileInputChange = e => {
+    const file = e.target.files[0];
+    
+    fileToBase64Fx( file )
+
+    e.target.value = null;
+  };
+
   return (
     <>
       <div className={styles.chatsFilter}>
@@ -29,316 +66,6 @@ export const Messenger = () => {
                 <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
               </div>
             </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
-            <div className={styles.chatListItem}>
-              <img src="https://cutt.ly/5jZr5qf" alt="userpic" />
-              <div className={styles.chatListName}>
-                <div style={{ fontWeight: 'bold' }}>Piere Barbosa</div>
-                <div style={{ fontSize: '14px', color: 'gray' }}>I'll notify you</div>
-              </div>
-              <div className={styles.chatListTime}>
-                <div style={{ fontSize: '14px', color: 'gray' }}>17:42</div>
-              </div>
-            </div>
           </div>
         </div>
         <div className={styles.chat}>
@@ -346,41 +73,41 @@ export const Messenger = () => {
             <div>Today</div>
           </div>
           <div className={styles.messagesWrapper}>
-            <div className={styles.yourMessage}>
-              <div className={styles.messageText}>Hello</div>
-              <div className={styles.messageTime}>20:53</div>
-            </div>
-            <div className={styles.companionMessage}>
-              <div className={styles.messageText}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-              <div className={styles.messageTime}>20:54</div>
-            </div>
-            <div className={styles.yourMessage}>
-              <div className={styles.messageText}>Hello</div>
-              <div className={styles.messageTime}>20:53</div>
-            </div>
-            <div className={styles.yourMessage}>
-              <div className={styles.messageText}>Hello</div>
-              <div className={styles.messageTime}>20:53</div>
-            </div>
-            <div className={styles.yourMessage}>
-              <div className={styles.messageText}>Hello</div>
-              <div className={styles.messageTime}>20:53</div>
-            </div>
-            <div className={styles.yourMessage}>
-              <div className={styles.messageText}>Hello</div>
-              <div className={styles.messageTime}>20:53</div>
-            </div>
-            <div className={styles.yourMessage}>
-              <div className={styles.messageText}>Hello</div>
-              <div className={styles.messageTime}>20:53</div>
-            </div>
+            {
+              messages.map(msg => {
+                return (
+                  <div className={styles.yourMessage} key={msg.uuid}>
+                    <div className={styles.messageBody}>
+                    <div>
+                        {msg.base64URL && <div><img src={msg.base64URL} alt="img"></img></div>}
+                        {msg.text}
+                        <i className={[`${messageStatusText[msg.status]}`, styles.messageStatus].join(' ')}></i>
+                    </div>
+                    </div>
+                    <div className={styles.messageTime}>{msg.time}</div>
+                    
+                  </div>
+                )
+              })
+            }
+            <div ref={messagesEndRef}></div>
+
           </div>
-          <div className={styles.chatInput}>
-            <i className="fas fa-plus-circle"></i>
-            <div className={styles.chatForm}>
-              <form>
-                <input placeholder="Type something"></input>
-              </form>
+          <form className={styles.chatForm} onSubmit={handleSubmit}>
+            <input type="file"
+              id="file-upload"
+              onChange={handleFileInputChange}
+            >
+            </input>
+            <label for="file-upload">
+              <i className="fas fa-plus-circle"></i>
+            </label>
+            <div className={styles.chatInput}>
+              <input
+                name="chatMessage"
+                placeholder="Type something"
+                autoComplete="off"
+              />
             </div>
             <div className={styles.chatIcons}>
               <i className="fas fa-wallet"></i>
@@ -388,11 +115,11 @@ export const Messenger = () => {
               <i className="fas fa-camera-retro"></i>
               <i className="fas fa-microphone"></i>
             </div>
-          </div>
+          </form>
         </div>
         <div className={styles.companionInfo}>
           <div className={styles.contactAvatar}>
-            <img src="https://cutt.ly/5jZr5qf" style={{ width: '100px', borderRadius: '50%'}} alt="userpic"></img>
+            <img src="https://cutt.ly/5jZr5qf" style={{ width: '100px', borderRadius: '50%' }} alt="userpic"></img>
             <div style={{ fontSize: '20px', fontWeight: 'bold' }}>Piere Barbosa</div>
             <div style={{ fontSize: '14px', color: 'gray' }}>Active 17 min ago</div>
           </div>
