@@ -1,6 +1,5 @@
 import './App.scss';
 import { Header } from './components/Header/Header';
-import { Home } from './pages/Home/Home';
 import { history } from './history';
 import { routes } from "./pages/routes";
 import {

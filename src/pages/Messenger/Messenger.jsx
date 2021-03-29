@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './styles.module.scss';
 import { useStore } from 'effector-react';
 import { $messages, fileToBase64Fx, send} from './model'
