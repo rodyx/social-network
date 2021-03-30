@@ -6,7 +6,7 @@
 
 main {
   padding: 20px 0;
-  width: 65%;
+  width: 1250px;
 }
 
 @font-face {
@@ -52,6 +52,12 @@ a {
 
 ::-webkit-scrollbar-thumb {
   background-color: #545f81;
+}
+
+@media (max-width: 1200px) {
+  main {
+    width: 800px;
+  }
 }
 
 

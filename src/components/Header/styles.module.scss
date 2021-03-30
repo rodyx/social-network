@@ -52,11 +52,12 @@ header {
 }
 
 .headerDownLine {
-  background: #18183c;
+  width: 100%;
   height: 60px;
   display: flex;
   justify-content: center;
   color: #6d6c8b;
+  background: #18183c;
 
   .headerDownLineContainer {
     display: flex;

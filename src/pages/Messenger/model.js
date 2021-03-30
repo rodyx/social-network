@@ -21,7 +21,7 @@ export const $messages = createStore([])
 
 guard({
   source: send,
-  filter: ({ text }) => !!text,
+  filter: ({ text }) => Boolean(text),
   target: isFilled,
 })
 

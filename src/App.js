@@ -5,8 +5,10 @@ import { routes } from "./pages/routes";
 import {
   Switch,
   Route,
+  Redirect,
 } from 'react-router-dom';
 import { Router } from 'react-router';
+
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Header />
         <main>
           <Switch>
+            {/* временно */}
+            <Redirect exact from="/" to="/messenger" />
             {routes.map(route => (
               <Route
                 exact={route.exact}
